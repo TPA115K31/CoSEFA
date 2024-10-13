@@ -1,0 +1,16 @@
+pre {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+pre code {
+    display: block;
+    padding: 0.5rem;
+    overflow-x: scroll;
+}
+
+code {
+    display: inline;
+    padding: 2px 4px 4px 2px;
+    background-color: var(--vscode-editorWidget-background);
+}
