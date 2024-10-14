@@ -21,3 +21,6 @@ python Listen.py
 ### 说明
 
 对于model文件，我们上传至网盘中，请自行下载
+通过百度网盘分享的文件：Models
+链接：https://pan.baidu.com/s/1zapCjBRErKhxUk6DbteZTg?pwd=qmja 
+提取码：qmja
