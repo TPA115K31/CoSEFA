@@ -6,6 +6,8 @@
 
 ### 视频演示
 
+[![](Media/Cover.png)](https://www.bilibili.com/video/BV1Ja26YTET4/)
+
 ---
 
 ### 关于我们的工作
