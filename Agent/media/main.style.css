@@ -1,0 +1,37 @@
+pre {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+pre code {
+    display: block;
+    padding: 0.5rem;
+    overflow-x: scroll;
+}
+
+code {
+    display: inline;
+    padding: 2px 4px 4px 2px;
+    background-color: var(--vscode-editorWidget-background);
+}
+
+/* 添加自定义滚动条样式 */
+.auto-resize-textarea {
+    min-height: 24px;
+    max-height: 150px; /* 设置最大高度 */
+    overflow-y: auto; /* 超出最大高度时显示滚动条 */
+}
+
+/* 设置滚动条样式 */
+.auto-resize-textarea::-webkit-scrollbar {
+    width: 6px;
+}
+
+.auto-resize-textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.auto-resize-textarea::-webkit-scrollbar-thumb {
+    background-color: #3e4451;
+    border-radius: 3px;
+}

@@ -1,0 +1,204 @@
+{
+    "name": "CoSEFA",
+    "displayName": "GPT-INT-rebuild",
+    "description": "",
+    "version": "0.1.1",
+    "engines": {
+        "vscode": "^1.89.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "resources/CoSEFA.png",
+    "activationEvents": [
+        "onDidChangeConfiguration"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "CoSEFA.helloWorld",
+                "title": "Hello World"
+            },
+            {
+                "command": "CoSEFA.conversation",
+                "title": "GPT Conversation"
+            },
+			{
+				"command": "CoSEFA.secureGenerate",
+				"title": "Secure Generate"
+			},
+            {
+                "command": "CoSEFA.getCode",
+                "title": "Get Code-Dev"
+            },
+            {
+                "command": "CoSEFA.explainCode",
+                "title": "Generate code explanation"
+            },
+            {
+                "command": "CoSEFA.generateCodeUnitTest",
+                "title": "Generate unit tests"
+            },
+            {
+                "command": "CoSEFA.generateCodeComment",
+                "title": "Generate code comments"
+            },
+            {
+                "command": "CoSEFA.generateCodeVulnerabilityDetection",
+                "title": "Generate vulnerability detection"
+            },
+            {
+                "command": "CoSEFA.newConversation",
+                "title": "New chat session",
+                "icon":"$(add)"
+            },
+            {
+                "command": "CoSEFA.showHistory",
+                "title": "View chat history",
+                "icon":"$(history)"
+            }
+        ],
+        "submenus": [
+            {
+                "id": "CoSEFA.CoSEFA",
+                "label": "CoSEFA"
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                "command": "CoSEFA.newConversation",
+                "when": "view == CoSEFA.chatView", 
+                "group": "navigation@3" 
+                },
+                {
+                "command": "CoSEFA.showHistory",
+                "when": "view == CoSEFA.chatView",
+                "group": "navigation@4"
+                }
+            ],
+            "editor/context": [
+                {
+                    "submenu": "CoSEFA.CoSEFA",
+                    "group": "8_customized"
+                }
+            ],
+            "CoSEFA.CoSEFA": [
+				{
+					"when": "editorFocus && editorHasSelection",
+					"command": "CoSEFA.secureGenerate",
+					"group": "3"
+				},
+                {
+                    "when": "editorFocus && editorHasSelection ",
+                    "command": "CoSEFA.explainCode",
+                    "group": "3"
+                },
+                {
+                    "when": "editorFocus && editorHasSelection",
+                    "command": "CoSEFA.generateCodeUnitTest",
+                    "group": "3"
+                },
+                {
+                    "when": "editorFocus && editorHasSelection",
+                    "command": "CoSEFA.generateCodeComment",
+                    "group": "3"
+                },
+                {
+                    "when": "editorFocus && editorHasSelection",
+                    "command": "CoSEFA.generateCodeVulnerabilityDetection",
+                    "group": "3"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "chat-explorer",
+                    "title": "Chat Explorer",
+                    "icon": "resources/logo.svg"
+                }
+            ]
+        },
+        "views": {
+            "chat-explorer": [
+                {
+                    "type": "webview",
+                    "id": "CoSEFA.chatView",
+                    "name": "GPT-INT"
+                }
+            ]
+        },
+        "configuration": {
+            "type": "object",
+            "title": "GPT-INT Configuration",
+            "properties": {
+                "CoSEFA.RemoteUrl": {
+                    "type": "string",
+                    "default": "http://localhost:7741",
+                    "description": "GPT-INT remote server URL"
+                },
+                "CoSEFA.model": {
+                    "type": "string",
+                    "default": "deepseekcoder",
+                    "description": "GPT-INT model selection"
+                },
+                "CoSEFA.Prompt_explainCode": {
+                    "type": "string",
+                    "default": "# Explain the following code: \n",
+                    "description": "Prompt for explaining code"
+                },
+                "CoSEFA.Prompt_generateCodeComment": {
+                    "type": "string",
+                    "default": "# Generate code comments for the following code, returning as a code snippet: \n",
+                    "description": "Prompt for generating code comments"
+                },
+                "CoSEFA.Prompt_generateCodeUnitTest": {
+                    "type": "string",
+                    "default": "# Generate unit tests for the following code, returning as a code snippet: \n",
+                    "description": "Prompt for generating unit tests"
+                },
+                "CoSEFA.Prompt_generateCodeVulnerabilityDetection": {
+                    "type": "string",
+                    "default": "# Execute vulnerability detection for the following code: \n",
+                    "description": "Prompt for generating vulnerability detection"
+                },
+				"CoSEFA.stream_rec": {
+					"type": "boolean",
+					"default": false,
+					"description": "Enable or disable stream recognition"
+				}
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.17.7",
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.89.0",
+        "@typescript-eslint/eslint-plugin": "^7.7.1",
+        "@typescript-eslint/parser": "^7.7.1",
+        "@vscode/test-cli": "^0.0.9",
+        "@vscode/test-electron": "^2.3.9",
+        "eslint": "^8.57.0",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "axios": "^1.7.2",
+        "lodash": "^4.17.21",
+        "ollama": "^0.5.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TPA115K31/Agent.git"
+    }
+}

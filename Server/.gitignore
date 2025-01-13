@@ -1,0 +1,5 @@
+CoSec/model/*
+!CoSec/model/.gitkeep
+__pycache__
+logs
+.mypy_cache

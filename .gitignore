@@ -1,0 +1,13 @@
+# Node modules
+Agent/node_modules/
+Agent/out/
+
+# Python
+Server/__pycache__/
+Server/*/__pycache__/
+Server/*/*/__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/

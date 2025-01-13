@@ -1,0 +1,1 @@
+## Unauthorized use is strictly prohibited
