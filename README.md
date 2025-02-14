@@ -4,7 +4,7 @@ This project is the open-source repository of CoSEFA, containing the backend dem
 
 ### Video Demonstration
 
-[![](Media/Cover.png)]()
+[![](Media/Cover.png)](https://youtu.be/LO_JH1eQBbY)
 
 ---
 
